@@ -9,8 +9,11 @@ import { AuthService } from './auth.service';
   imports: [FormsModule, CommonModule],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css',
+  providers: [AuthService],
 })
 export class AuthComponent {
+  user: any[] = [];
+
   constructor(private authService: AuthService) {}
 
   onSubmit(form: NgForm) {
@@ -20,6 +23,9 @@ export class AuthComponent {
     const username = form.value.username;
     const password = form.value.password;
     const email = form.value.email;
+
+    this.authService.newUserStatus(username, email, password);
+    this.authService.signUp(username, email, password);
 
     form.reset();
   }
