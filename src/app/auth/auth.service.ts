@@ -5,9 +5,4 @@ import { User } from './user.model';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
-  // private userSubject = new BehaviorSubject<User>(null);
-  // getUser() {
-  //   return this.userSubject;
-  // }
-}
+export class AuthService {}
