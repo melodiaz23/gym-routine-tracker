@@ -1,10 +1,10 @@
-export class User {
+export class Account {
   constructor(
     public email: string | undefined,
     public username: string | undefined
   ) {}
 
   get user() {
-    return null;
+    return { email: this.email, username: this.username };
   }
 }
