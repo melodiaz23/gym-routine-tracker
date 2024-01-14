@@ -12,5 +12,5 @@ import { AuthComponent } from './auth/auth.component';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'routine-tracker';
+  title = 'Workout routine tracker';
 }
