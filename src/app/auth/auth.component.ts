@@ -20,5 +20,7 @@ export class AuthComponent {
     const username = form.value.username;
     const password = form.value.password;
     const email = form.value.email;
+
+    form.reset();
   }
 }
