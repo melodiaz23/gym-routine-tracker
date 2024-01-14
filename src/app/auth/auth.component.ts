@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 
 @Component({
@@ -14,7 +15,7 @@ import { AuthService } from './auth.service';
 export class AuthComponent {
   user: any[] = [];
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit(form: NgForm) {
     if (!form.valid) {
@@ -28,5 +29,6 @@ export class AuthComponent {
     this.authService.signUp(username, email, password);
 
     form.reset();
+    this.router.navigate(['/user']);
   }
 }
