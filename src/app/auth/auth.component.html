@@ -1,13 +1,34 @@
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<form (ngSubmit)="onSubmit(authForm)" #authForm="ngForm" ngNativeValidate>
   <div
     class="mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 mt-8 flex flex-col w-1/2"
   >
+    <div class="mb-6">
+      <label class="block text-grey-darker text-sm font-bold mb-2" for="email"
+        >E-mail:</label
+      >
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+        type="email"
+        id="email"
+        ngModel
+        name="email"
+        placeholder="your@email.com"
+        #email="ngModel"
+        required
+        email
+      />
+      <span
+        class="text-red-500 text-xs italic"
+        *ngIf="email.invalid && email.touched"
+        >Please enter a valid e-mail.</span
+      >
+    </div>
     <div class="mb-4">
       <label
         class="block text-grey-darker text-sm font-bold mb-2"
         for="username"
       >
-        Username
+        Username:
       </label>
       <input
         class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
@@ -16,38 +37,58 @@
         ngModel
         name="username"
         placeholder="Username"
+        #username="ngModel"
+        required
       />
+      <span
+        class="text-red-500 text-xs italic"
+        *ngIf="username.invalid && username.touched"
+      >
+        Please enter a valid username.
+      </span>
     </div>
     <div class="mb-6">
       <label
         class="block text-grey-darker text-sm font-bold mb-2"
         for="password"
       >
-        Password
+        Password:
       </label>
       <input
-        class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker mb-0"
         id="password"
         type="password"
         ngModel
         name="password"
         placeholder="**********"
+        required
+        #password="ngModel"
+        password
+        minlength="6"
       />
-      <p class="text-red text-xs italic">Please choose a password.</p>
+      <span
+        class="text-red-500 text-xs italic py-0"
+        *ngIf="password.invalid && password.touched"
+        >Password must have at least 6 characters.</span
+      >
     </div>
     <div class="flex items-center justify-between">
       <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors disabled:opacity-50"
         type="submit"
+        [disabled]="!authForm.valid"
       >
-        Sign In
+        Sign Up
       </button>
-      <a
-        class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-700"
-        href="#"
-      >
-        Forgot Password?
-      </a>
+      <div class="text-right text-xs text-gray-500">
+        <p>Already have and account?</p>
+        <a
+          class="inline-block align-baseline font-bold text-blue-500 hover:text-blue-700"
+          href="#"
+        >
+          Click here
+        </a>
+      </div>
     </div>
   </div>
 </form>
