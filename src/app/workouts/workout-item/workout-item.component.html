@@ -1,0 +1,26 @@
+<div class="">
+  <h3 class="list-group-item-heading font-bold text-xl">
+    Day {{ workouts[id].day }}: {{ workouts[id].dayName }}
+  </h3>
+
+  <div *ngFor="let exercise of workouts[id].exercises; let idx = index">
+    <ul>
+      <li>
+        <h4 class="list-group-item-heading font-bold mt-2">
+          {{ exercise.exerciseName }}
+        </h4>
+      </li>
+    </ul>
+    <p class="list-group-item-text">
+      {{ exercise.reps }} x {{ exercise.sets }}
+    </p>
+    <span class="">
+      <img
+        [src]="exercise.imagePath"
+        alt=""
+        class="img-responsive"
+        style="max-height: 250px"
+      />
+    </span>
+  </div>
+</div>
